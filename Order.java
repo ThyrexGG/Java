@@ -1,6 +1,6 @@
 public class Order {
     String orderID;
-    String customerName;
+    Customer customer;
     double totalPrice;
     String status;
 }
