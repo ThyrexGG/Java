@@ -17,6 +17,8 @@ public class Order {
         setOrderID(orderID);
         setCustomer(customer);
         setOrderDate(orderDate);
+        setItems(new java.util.ArrayList<>());
+        setTotalPrice(0.0);
     }
 
     public String getOrderID() {
@@ -47,7 +49,7 @@ public class Order {
         return items;
     }
 
-    public void setItems(List<OrderItem> items) {
+    private void setItems(List<OrderItem> items) {
         this.items = items;
     }
 
@@ -55,7 +57,7 @@ public class Order {
         return totalPrice;
     }
 
-    public void setTotalPrice(double totalPrice) {
+    private void setTotalPrice(double totalPrice) {
         this.totalPrice = totalPrice;
     }
 

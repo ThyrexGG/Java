@@ -11,10 +11,13 @@ public class OrderItem {
     private double subtotal;
 
     // Constructor
-    public OrderItem(String clothingItemId, String itemName, double price) {
+    public OrderItem(String clothingItemId, String itemName, double price, String size, String color) {
         setClothingItemId(clothingItemId);
         setItemName(itemName);
         setPrice(price);
+        setSize(size);
+        setColor(color);
+        setSubtotal(0.0);
     }
 
     public String getClothingItemId() {
@@ -37,7 +40,7 @@ public class OrderItem {
         return size;
     }
 
-    public void setSize(String size) {
+    private void setSize(String size) {
         this.size = size;
     }
 
@@ -45,7 +48,7 @@ public class OrderItem {
         return color;
     }
 
-    public void setColor(String color) {
+    private void setColor(String color) {
         this.color = color;
     }
 
@@ -77,7 +80,7 @@ public class OrderItem {
         return subtotal;
     }
 
-    public void setSubtotal(double subtotal) {
+    private void setSubtotal(double subtotal) {
         this.subtotal = subtotal;
     }
 }

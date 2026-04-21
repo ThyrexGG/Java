@@ -12,6 +12,7 @@ public class Customer {
     public Customer(String customerId, String name) {
         setCustomerId(customerId);
         setName(name);
+        setMembershipLevel("Bronze");
     }
 
     public String getCustomerId() {
@@ -58,7 +59,7 @@ public class Customer {
         return membershipLevel;
     }
 
-    public void setMembershipLevel(String membershipLevel) {
+    private void setMembershipLevel(String membershipLevel) {
         this.membershipLevel = membershipLevel;
     }
 

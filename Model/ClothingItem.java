@@ -11,9 +11,13 @@ public class ClothingItem {
     private String gender;
 
     // Constructor for immutable fields
-    public ClothingItem(String itemCode, String itemName) {
+    public ClothingItem(String itemCode, String itemName, String catogory, String size, String color, String gender) {
         setitemCode(itemCode);
         setitemName(itemName);
+        setcatogory(catogory);
+        setsize(size);
+        setcolor(color);
+        setgender(gender);
     }
 
     public String getitemName() {
@@ -36,7 +40,7 @@ public class ClothingItem {
         return catogory;
     }
 
-    public void setcatogory(String catogory) {
+    private void setcatogory(String catogory) {
         this.catogory = catogory;
     }
 
@@ -44,7 +48,7 @@ public class ClothingItem {
         return size;
     }
 
-    public void setsize(String size) {
+    private void setsize(String size) {
         this.size = size;
     }
 
@@ -52,7 +56,7 @@ public class ClothingItem {
         return color;
     }
 
-    public void setcolor(String color) {
+    private void setcolor(String color) {
         this.color = color;
     }
 
@@ -76,7 +80,7 @@ public class ClothingItem {
         return gender;
     }
 
-    public void setgender(String gender) {
+    private void setgender(String gender) {
         this.gender = gender;
     }
 }
