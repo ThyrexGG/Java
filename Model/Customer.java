@@ -9,11 +9,16 @@ public class Customer {
     private String membershipLevel;
     private int loyaltyPoints;
 
+    public Customer(String customerId, String name) {
+        setCustomerId(customerId);
+        setName(name);
+    }
+
     public String getCustomerId() {
         return customerId;
     }
 
-    public void setCustomerId(String customerId) {
+    private void setCustomerId(String customerId) {
         this.customerId = customerId;
     }
 
@@ -61,7 +66,8 @@ public class Customer {
         return loyaltyPoints;
     }
 
-    public void setLoyaltyPoints(int loyaltyPoints) {
-        this.loyaltyPoints = loyaltyPoints;
+    // Real-world: Add or deduct points, rather than directly setting them
+    public void addLoyaltyPoints(int points) {
+        this.loyaltyPoints += points;
     }
 }

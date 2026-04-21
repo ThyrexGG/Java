@@ -10,11 +10,18 @@ public class OrderItem {
     private double discount;
     private double subtotal;
 
+    // Constructor
+    public OrderItem(String clothingItemId, String itemName, double price) {
+        setClothingItemId(clothingItemId);
+        setItemName(itemName);
+        setPrice(price);
+    }
+
     public String getClothingItemId() {
         return clothingItemId;
     }
 
-    public void setClothingItemId(String clothingItemId) {
+    private void setClothingItemId(String clothingItemId) {
         this.clothingItemId = clothingItemId;
     }
 
@@ -22,7 +29,7 @@ public class OrderItem {
         return itemName;
     }
 
-    public void setItemName(String itemName) {
+    private void setItemName(String itemName) {
         this.itemName = itemName;
     }
 
@@ -46,7 +53,7 @@ public class OrderItem {
         return price;
     }
 
-    public void setPrice(double price) {
+    private void setPrice(double price) {
         this.price = price;
     }
 

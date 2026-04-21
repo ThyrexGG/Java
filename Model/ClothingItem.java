@@ -10,6 +10,12 @@ public class ClothingItem {
     private int stock;
     private String gender;
 
+    // Constructor for immutable fields
+    public ClothingItem(String itemCode, String itemName) {
+        setitemCode(itemCode);
+        setitemName(itemName);
+    }
+
     public String getitemName() {
         return itemName;
     }
@@ -22,7 +28,7 @@ public class ClothingItem {
         return itemCode;
     }
 
-    public void setitemCode(String itemCode) {
+    private void setitemCode(String itemCode) {
         this.itemCode = itemCode;
     }
 

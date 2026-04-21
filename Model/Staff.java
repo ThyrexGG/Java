@@ -11,11 +11,18 @@ public class Staff {
     private String address;
     private String StartDate;
 
+    // Constructor
+    public Staff(String staffId, String name, String startDate) {
+        setStaffId(staffId);
+        setName(name);
+        setStartDate(startDate);
+    }
+
     public String getStaffId() {
         return staffId;
     }
 
-    public void setStaffId(String staffId) {
+    private void setStaffId(String staffId) {
         this.staffId = staffId;
     }
 
@@ -79,7 +86,7 @@ public class Staff {
         return StartDate;
     }
 
-    public void setStartDate(String StartDate) {
+    private void setStartDate(String StartDate) {
         this.StartDate = StartDate;
     }
 }

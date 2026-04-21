@@ -12,11 +12,18 @@ public class Order {
     private String paymentStatus;
     private String shippingAddress;
 
+    // Constructor
+    public Order(String orderID, Customer customer, String orderDate) {
+        setOrderID(orderID);
+        setCustomer(customer);
+        setOrderDate(orderDate);
+    }
+
     public String getOrderID() {
         return orderID;
     }
 
-    public void setOrderID(String orderID) {
+    private void setOrderID(String orderID) {
         this.orderID = orderID;
     }
 
@@ -24,7 +31,7 @@ public class Order {
         return orderDate;
     }
 
-    public void setOrderDate(String orderDate) {
+    private void setOrderDate(String orderDate) {
         this.orderDate = orderDate;
     }
 
@@ -32,7 +39,7 @@ public class Order {
         return customer;
     }
 
-    public void setCustomer(Customer customer) {
+    private void setCustomer(Customer customer) {
         this.customer = customer;
     }
 

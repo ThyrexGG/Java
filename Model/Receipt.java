@@ -44,30 +44,30 @@ public class Receipt {
         return paymentMethod;
     }
 
-    // Setters with validation
-    public void setReceiptId(String receiptId) {
+    // Setters (Private because a Receipt is immutable once created)
+    private void setReceiptId(String receiptId) {
         validateString(receiptId, "Receipt ID");
         this.receiptId = receiptId;
     }
 
-    public void setCustomerName(String customerName) {
+    private void setCustomerName(String customerName) {
         validateString(customerName, "Customer name");
         this.customerName = customerName;
     }
 
-    public void setDate(String date) {
+    private void setDate(String date) {
         validateString(date, "Date");
         this.date = date;
     }
 
-    public void setTotalAmount(double totalAmount) {
+    private void setTotalAmount(double totalAmount) {
         if (totalAmount < 0) {
             throw new IllegalArgumentException("Total amount cannot be negative");
         }
         this.totalAmount = totalAmount;
     }
 
-    public void setPaymentMethod(String paymentMethod) {
+    private void setPaymentMethod(String paymentMethod) {
         validateString(paymentMethod, "Payment method");
         this.paymentMethod = paymentMethod;
     }
