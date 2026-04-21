@@ -3,8 +3,6 @@ package Model;
 public class OrderItem {
     private String clothingItemId;
     private String itemName;
-    private String size;
-    private String color;
     private double price;
     private int quantity;
     private double discount;
@@ -15,8 +13,6 @@ public class OrderItem {
         setClothingItemId(clothingItemId);
         setItemName(itemName);
         setPrice(price);
-        setSize(size);
-        setColor(color);
         setSubtotal(0.0);
     }
 
@@ -34,22 +30,6 @@ public class OrderItem {
 
     private void setItemName(String itemName) {
         this.itemName = itemName;
-    }
-
-    public String getSize() {
-        return size;
-    }
-
-    private void setSize(String size) {
-        this.size = size;
-    }
-
-    public String getColor() {
-        return color;
-    }
-
-    private void setColor(String color) {
-        this.color = color;
     }
 
     public double getPrice() {
