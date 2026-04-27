@@ -12,75 +12,75 @@ public class ClothingItem {
 
     // Constructor for immutable fields
     public ClothingItem(String itemCode, String itemName, String catogory, String size, String color, String gender) {
-        setitemCode(itemCode);
-        setitemName(itemName);
-        setcatogory(catogory);
-        setsize(size);
-        setcolor(color);
-        setgender(gender);
+        setItemCode(itemCode);
+        setItemName(itemName);
+        setCategory(catogory);
+        setSize(size);
+        setColor(color);
+        setGender(gender);
     }
 
-    public String getitemName() {
+    public String getItemName() {
         return itemName;
     }
 
-    public void setitemName(String itemName) {
+    public void setItemName(String itemName) {
         this.itemName = itemName;
     }
 
-    public String getitemCode() {
+    public String getItemCode() {
         return itemCode;
     }
 
-    private void setitemCode(String itemCode) {
+    private void setItemCode(String itemCode) {
         this.itemCode = itemCode;
     }
 
-    public String getcatogory() {
+    public String getCategory() {
         return catogory;
     }
 
-    private void setcatogory(String catogory) {
+    private void setCategory(String catogory) {
         this.catogory = catogory;
     }
 
-    public String getsize() {
+    public String getSize() {
         return size;
     }
 
-    private void setsize(String size) {
+    private void setSize(String size) {
         this.size = size;
     }
 
-    public String getcolor() {
+    public String getColor() {
         return color;
     }
 
-    private void setcolor(String color) {
+    private void setColor(String color) {
         this.color = color;
     }
 
-    public double getprice() {
+    public double getPrice() {
         return price;
     }
 
-    public void setprice(double price) {
+    public void setPrice(double price) {
         this.price = price;
     }
 
-    public int getstock() {
+    public int getStock() {
         return stock;
     }
 
-    public void setstock(int stock) {
+    public void setStock(int stock) {
         this.stock = stock;
     }
 
-    public String getgender() {
+    public String getGender() {
         return gender;
     }
 
-    private void setgender(String gender) {
+    private void setGender(String gender) {
         this.gender = gender;
     }
 }
