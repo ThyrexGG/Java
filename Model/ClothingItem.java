@@ -20,11 +20,19 @@ public class ClothingItem {
         setgender(gender);
     }
 
+    // Helper method for string validation
+    private void validateString(String value, String fieldName) {
+        if (value == null || value.trim().isEmpty()) {
+            throw new IllegalArgumentException(fieldName + " cannot be null or empty");
+        }
+    }
+
     public String getitemName() {
         return itemName;
     }
 
     public void setitemName(String itemName) {
+        validateString(itemName, "Item Name");
         this.itemName = itemName;
     }
 
@@ -33,6 +41,7 @@ public class ClothingItem {
     }
 
     private void setitemCode(String itemCode) {
+        validateString(itemCode, "Item Code");
         this.itemCode = itemCode;
     }
 
@@ -41,6 +50,7 @@ public class ClothingItem {
     }
 
     private void setcatogory(String catogory) {
+        validateString(catogory, "Category");
         this.catogory = catogory;
     }
 
@@ -49,6 +59,7 @@ public class ClothingItem {
     }
 
     private void setsize(String size) {
+        validateString(size, "Size");
         this.size = size;
     }
 
@@ -57,6 +68,7 @@ public class ClothingItem {
     }
 
     private void setcolor(String color) {
+        validateString(color, "Color");
         this.color = color;
     }
 
@@ -65,6 +77,7 @@ public class ClothingItem {
     }
 
     public void setprice(double price) {
+        if (price < 0) throw new IllegalArgumentException("Price cannot be negative");
         this.price = price;
     }
 
@@ -73,6 +86,7 @@ public class ClothingItem {
     }
 
     public void setstock(int stock) {
+        if (stock < 0) throw new IllegalArgumentException("Stock cannot be negative");
         this.stock = stock;
     }
 
@@ -81,6 +95,7 @@ public class ClothingItem {
     }
 
     private void setgender(String gender) {
+        validateString(gender, "Gender");
         this.gender = gender;
     }
 }

@@ -21,11 +21,19 @@ public class Order {
         setTotalPrice(0.0);
     }
 
+    // Helper method for string validation
+    private void validateString(String value, String fieldName) {
+        if (value == null || value.trim().isEmpty()) {
+            throw new IllegalArgumentException(fieldName + " cannot be null or empty");
+        }
+    }
+
     public String getOrderID() {
         return orderID;
     }
 
     private void setOrderID(String orderID) {
+        validateString(orderID, "Order ID");
         this.orderID = orderID;
     }
 
@@ -34,6 +42,7 @@ public class Order {
     }
 
     private void setOrderDate(String orderDate) {
+        validateString(orderDate, "Order Date");
         this.orderDate = orderDate;
     }
 
@@ -42,6 +51,7 @@ public class Order {
     }
 
     private void setCustomer(Customer customer) {
+        if (customer == null) throw new IllegalArgumentException("Customer cannot be null");
         this.customer = customer;
     }
 
@@ -50,6 +60,7 @@ public class Order {
     }
 
     private void setItems(List<OrderItem> items) {
+        if (items == null) throw new IllegalArgumentException("Items list cannot be null");
         this.items = items;
     }
 
@@ -58,6 +69,7 @@ public class Order {
     }
 
     private void setTotalPrice(double totalPrice) {
+        if (totalPrice < 0) throw new IllegalArgumentException("Total price cannot be negative");
         this.totalPrice = totalPrice;
     }
 
@@ -66,6 +78,7 @@ public class Order {
     }
 
     public void setStatus(String status) {
+        validateString(status, "Status");
         this.status = status;
     }
 
@@ -74,6 +87,7 @@ public class Order {
     }
 
     public void setPaymentStatus(String paymentStatus) {
+        validateString(paymentStatus, "Payment Status");
         this.paymentStatus = paymentStatus;
     }
 
@@ -82,6 +96,7 @@ public class Order {
     }
 
     public void setShippingAddress(String shippingAddress) {
+        validateString(shippingAddress, "Shipping Address");
         this.shippingAddress = shippingAddress;
     }
 }

@@ -15,11 +15,19 @@ public class Customer {
         setMembershipLevel("Bronze");
     }
 
+    // Helper method for string validation
+    private void validateString(String value, String fieldName) {
+        if (value == null || value.trim().isEmpty()) {
+            throw new IllegalArgumentException(fieldName + " cannot be null or empty");
+        }
+    }
+
     public String getCustomerId() {
         return customerId;
     }
 
     private void setCustomerId(String customerId) {
+        validateString(customerId, "Customer ID");
         this.customerId = customerId;
     }
 
@@ -28,6 +36,7 @@ public class Customer {
     }
 
     public void setName(String name) {
+        validateString(name, "Name");
         this.name = name;
     }
 
@@ -36,6 +45,7 @@ public class Customer {
     }
 
     public void setPhone(String phone) {
+        validateString(phone, "Phone");
         this.phone = phone;
     }
 
@@ -44,6 +54,7 @@ public class Customer {
     }
 
     public void setEmail(String email) {
+        validateString(email, "Email");
         this.email = email;
     }
 
@@ -52,6 +63,7 @@ public class Customer {
     }
 
     public void setAddress(String address) {
+        validateString(address, "Address");
         this.address = address;
     }
 
@@ -60,6 +72,7 @@ public class Customer {
     }
 
     private void setMembershipLevel(String membershipLevel) {
+        validateString(membershipLevel, "Membership Level");
         this.membershipLevel = membershipLevel;
     }
 
@@ -69,6 +82,7 @@ public class Customer {
 
     // Real-world: Add or deduct points, rather than directly setting them
     public void addLoyaltyPoints(int points) {
+        if (points < 0) throw new IllegalArgumentException("Points cannot be negative");
         this.loyaltyPoints += points;
     }
 }
