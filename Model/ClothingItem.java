@@ -27,7 +27,7 @@ public class ClothingItem {
         }
     }
 
-    public String getitemName() {
+    public String getItemName() {
         return itemName;
     }
 
@@ -36,7 +36,7 @@ public class ClothingItem {
         this.itemName = itemName;
     }
 
-    public String getitemCode() {
+    public String getItemCode() {
         return itemCode;
     }
 
@@ -45,7 +45,7 @@ public class ClothingItem {
         this.itemCode = itemCode;
     }
 
-    public String getcatogory() {
+    public String getCategory() {
         return catogory;
     }
 
@@ -54,7 +54,7 @@ public class ClothingItem {
         this.catogory = catogory;
     }
 
-    public String getsize() {
+    public String getSize() {
         return size;
     }
 
@@ -63,7 +63,7 @@ public class ClothingItem {
         this.size = size;
     }
 
-    public String getcolor() {
+    public String getColor() {
         return color;
     }
 
@@ -72,25 +72,27 @@ public class ClothingItem {
         this.color = color;
     }
 
-    public double getprice() {
+    public double getPrice() {
         return price;
     }
 
     public void setprice(double price) {
-        if (price < 0) throw new IllegalArgumentException("Price cannot be negative");
+        if (price < 0)
+            throw new IllegalArgumentException("Price cannot be negative");
         this.price = price;
     }
 
-    public int getstock() {
+    public int getStock() {
         return stock;
     }
 
     public void setstock(int stock) {
-        if (stock < 0) throw new IllegalArgumentException("Stock cannot be negative");
+        if (stock < 0)
+            throw new IllegalArgumentException("Stock cannot be negative");
         this.stock = stock;
     }
 
-    public String getgender() {
+    public String getGender() {
         return gender;
     }
 

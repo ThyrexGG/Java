@@ -6,61 +6,71 @@ public class OrderItem {
     private double price;
     private int quantity;
     private double discount;
-    private double subtotal;
 
     // Constructor
-    public OrderItem(String clothingItemId, String itemName, double price, String size, String color) {
+    public OrderItem(String clothingItemId, String itemName, double price, int quantity) {
         setClothingItemId(clothingItemId);
         setItemName(itemName);
         setPrice(price);
-        setSubtotal(0.0);
+        setQuantity(quantity);
+        this.discount = 0.0;
     }
 
+    // Calculate for reciept
+    public double calculateSubtotal() {
+        double subtotal = price * quantity;
+        return subtotal - discount;
+    }
+
+    // Getters
     public String getClothingItemId() {
         return clothingItemId;
-    }
-
-    private void setClothingItemId(String clothingItemId) {
-        this.clothingItemId = clothingItemId;
     }
 
     public String getItemName() {
         return itemName;
     }
 
-    private void setItemName(String itemName) {
-        this.itemName = itemName;
-    }
-
     public double getPrice() {
         return price;
-    }
-
-    private void setPrice(double price) {
-        this.price = price;
     }
 
     public int getQuantity() {
         return quantity;
     }
 
-    public void setQuantity(int quantity) {
-        this.quantity = quantity;
-    }
-
     public double getDiscount() {
         return discount;
     }
 
+    // Setters 
+    public void setClothingItemId(String clothingItemId) {
+        if (clothingItemId != null && !clothingItemId.trim().isEmpty()) {
+            this.clothingItemId = clothingItemId;
+        }
+    }
+
+    public void setItemName(String itemName) {
+        if (itemName != null && !itemName.trim().isEmpty()) {
+            this.itemName = itemName;
+        }
+    }
+
+    public void setPrice(double price) {
+        if (price >= 0) {
+            this.price = price;
+        }
+    }
+
+    public void setQuantity(int quantity) {
+        if (quantity > 0) {
+            this.quantity = quantity;
+        }
+    }
+
     public void setDiscount(double discount) {
-        this.discount = discount;
-    }
-
-    public double getSubtotal() {
-        return subtotal;
-    }
-
-    private void setSubtotal(double subtotal) {
-        this.subtotal = subtotal;
+        if (discount >= 0) {
+            this.discount = discount;
+        }
     }
 }

@@ -1,39 +1,45 @@
 package Model;
 
+import java.util.ArrayList;
+
 public class Receipt {
+    // Encapsulation 
     private String receiptId;
     private String customerName;
-    private String date;
     private double totalAmount;
     private String paymentMethod;
 
-    // Constructor
-    public Receipt(String receiptId, String customerName, String date, double totalAmount, String paymentMethod) {
+    // static variable 
+    private static int receiptCount = 0;
+
+    //  collection (store multiple items)
+    private ArrayList<OrderItem> items;
+
+    // Constructor 
+    public Receipt(String receiptId, String customerName, String paymentMethod) {
         setReceiptId(receiptId);
         setCustomerName(customerName);
-        setDate(date);
-        setTotalAmount(totalAmount);
         setPaymentMethod(paymentMethod);
+        this.totalAmount = 0.0;
+        this.items = new ArrayList<>();
+        receiptCount++;
     }
 
-    // Helper method for string validation
-    private void validateString(String value, String fieldName) {
-        if (value == null || value.trim().isEmpty()) {
-            throw new IllegalArgumentException(fieldName + " cannot be null or empty");
+    // Add items
+    public void addItem(OrderItem item) {
+        if (item != null) {
+            items.add(item);
+            totalAmount += item.calculateSubtotal();
         }
     }
 
-    // Getters
+    // Getter 
     public String getReceiptId() {
         return receiptId;
     }
 
     public String getCustomerName() {
         return customerName;
-    }
-
-    public String getDate() {
-        return date;
     }
 
     public double getTotalAmount() {
@@ -44,31 +50,31 @@ public class Receipt {
         return paymentMethod;
     }
 
-    // Setters (Private because a Receipt is immutable once created)
-    private void setReceiptId(String receiptId) {
-        validateString(receiptId, "Receipt ID");
-        this.receiptId = receiptId;
+    public ArrayList<OrderItem> getItems() {
+        return items;
     }
 
-    private void setCustomerName(String customerName) {
-        validateString(customerName, "Customer name");
-        this.customerName = customerName;
+    // Static 
+    public static int getReceiptCount() {
+        return receiptCount;
     }
 
-    private void setDate(String date) {
-        validateString(date, "Date");
-        this.date = date;
-    }
-
-    private void setTotalAmount(double totalAmount) {
-        if (totalAmount < 0) {
-            throw new IllegalArgumentException("Total amount cannot be negative");
+    // Setter
+    public void setReceiptId(String receiptId) {
+        if (receiptId != null && !receiptId.trim().isEmpty()) {
+            this.receiptId = receiptId;
         }
-        this.totalAmount = totalAmount;
     }
 
-    private void setPaymentMethod(String paymentMethod) {
-        validateString(paymentMethod, "Payment method");
-        this.paymentMethod = paymentMethod;
+    public void setCustomerName(String customerName) {
+        if (customerName != null && !customerName.trim().isEmpty()) {
+            this.customerName = customerName;
+        }
+    }
+
+    public void setPaymentMethod(String paymentMethod) {
+        if (paymentMethod != null && !paymentMethod.trim().isEmpty()) {
+            this.paymentMethod = paymentMethod;
+        }
     }
 }
