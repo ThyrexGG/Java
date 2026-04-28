@@ -13,7 +13,7 @@ public class main {
     public static void main(String[] args) {
 
         System.out.println("========================================");
-        System.out.println("      CLOTHING SHOP MANAGEMENT SYSTEM   ");
+        System.out.println("     CLOTHING SHOP MANAGEMENT SYSTEM    ");
         System.out.println("========================================\n");
 
         // ── 1. CREATE STAFF OBJECTS ──────────────────────────────
