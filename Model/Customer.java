@@ -15,10 +15,9 @@ public class Customer {
         setMembershipLevel("Bronze");
     }
 
-    // Helper method for string validation
     private void validateString(String value, String fieldName) {
         if (value == null || value.trim().isEmpty()) {
-            throw new IllegalArgumentException(fieldName + " cannot be null or empty");
+            System.out.println(fieldName + " cannot be null or empty");
         }
     }
 
@@ -80,9 +79,9 @@ public class Customer {
         return loyaltyPoints;
     }
 
-    // Real-world: Add or deduct points, rather than directly setting them
     public void addLoyaltyPoints(int points) {
-        if (points < 0) throw new IllegalArgumentException("Points cannot be negative");
+        if (points < 0)
+            System.out.println("Points cannot be negative");
         this.loyaltyPoints += points;
     }
 }

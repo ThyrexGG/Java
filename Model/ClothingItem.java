@@ -10,7 +10,6 @@ public class ClothingItem {
     private int stock;
     private String gender;
 
-    // Constructor for immutable fields
     public ClothingItem(String itemCode, String itemName, String catogory, String size, String color, String gender) {
         setitemCode(itemCode);
         setitemName(itemName);
@@ -20,10 +19,9 @@ public class ClothingItem {
         setgender(gender);
     }
 
-    // Helper method for string validation
     private void validateString(String value, String fieldName) {
         if (value == null || value.trim().isEmpty()) {
-            throw new IllegalArgumentException(fieldName + " cannot be null or empty");
+            System.out.println(fieldName + " cannot be null or empty");
         }
     }
 
@@ -78,7 +76,7 @@ public class ClothingItem {
 
     public void setprice(double price) {
         if (price < 0)
-            throw new IllegalArgumentException("Price cannot be negative");
+            System.out.println("Price cannot be negative");
         this.price = price;
     }
 
@@ -88,7 +86,7 @@ public class ClothingItem {
 
     public void setstock(int stock) {
         if (stock < 0)
-            throw new IllegalArgumentException("Stock cannot be negative");
+            System.out.println("Stock cannot be negative");
         this.stock = stock;
     }
 

@@ -1,30 +1,28 @@
 package Model;
 
-import java.util.List;
+import java.util.ArrayList;
 
 public class Order {
     private String orderID;
     private String orderDate;
     private Customer customer;
-    private List<OrderItem> items;
+    private ArrayList<OrderItem> items;
     private double totalPrice;
     private String status;
     private String paymentStatus;
     private String shippingAddress;
 
-    // Constructor
     public Order(String orderID, Customer customer, String orderDate) {
         setOrderID(orderID);
         setCustomer(customer);
         setOrderDate(orderDate);
-        setItems(new java.util.ArrayList<>());
+        setItems(new ArrayList<>());
         setTotalPrice(0.0);
     }
 
-    // Helper method for string validation
     private void validateString(String value, String fieldName) {
         if (value == null || value.trim().isEmpty()) {
-            throw new IllegalArgumentException(fieldName + " cannot be null or empty");
+            System.out.println(fieldName + " cannot be null or empty");
         }
     }
 
@@ -51,16 +49,18 @@ public class Order {
     }
 
     private void setCustomer(Customer customer) {
-        if (customer == null) throw new IllegalArgumentException("Customer cannot be null");
+        if (customer == null)
+            System.out.println("Customer cannot be null");
         this.customer = customer;
     }
 
-    public List<OrderItem> getItems() {
+    public ArrayList<OrderItem> getItems() {
         return items;
     }
 
-    private void setItems(List<OrderItem> items) {
-        if (items == null) throw new IllegalArgumentException("Items list cannot be null");
+    private void setItems(ArrayList<OrderItem> items) {
+        if (items == null)
+            System.out.println("Items list cannot be null");
         this.items = items;
     }
 
@@ -69,7 +69,8 @@ public class Order {
     }
 
     private void setTotalPrice(double totalPrice) {
-        if (totalPrice < 0) throw new IllegalArgumentException("Total price cannot be negative");
+        if (totalPrice < 0)
+            System.out.println("Total price cannot be negative");
         this.totalPrice = totalPrice;
     }
 
