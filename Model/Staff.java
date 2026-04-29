@@ -1,92 +1,104 @@
 package Model;
 
 public class Staff {
+
+    // ── Fields ───────────────────────────────────────────────
     private String staffId;
     private String name;
     private String role;
-    private double salary;
     private String shift;
-    private String PhoneNumber;
-    private String email;
-    private String address;
-    private String StartDate;
+    private String phoneNumber; // fixed: was "PhoneNumber"
+    private String startDate; // fixed: was "StartDate"
+    private double salary;
 
-    // Constructor
+    // ── Static counter ───────────────────────────────────────
+    private static int staffCount = 0;
+
+    // ── Constructor ──────────────────────────────────────────
     public Staff(String staffId, String name, String startDate) {
         setStaffId(staffId);
         setName(name);
         setStartDate(startDate);
+        staffCount++;
     }
 
+    // ── Validation helper ────────────────────────────────────
+    private void validateString(String value, String fieldName) {
+        if (value == null || value.trim().isEmpty()) {
+            System.out.println(fieldName + " cannot be null or empty");
+        }
+    }
+
+    // ── Static method ────────────────────────────────────────
+    public static int getStaffCount() {
+        return staffCount;
+    }
+
+    // ── Getters ──────────────────────────────────────────────
     public String getStaffId() {
         return staffId;
-    }
-
-    private void setStaffId(String staffId) {
-        this.staffId = staffId;
     }
 
     public String getName() {
         return name;
     }
 
-    public void setName(String name) {
-        this.name = name;
-    }
-
     public String getRole() {
         return role;
-    }
-
-    public void setRole(String role) {
-        this.role = role;
-    }
-
-    public double getSalary() {
-        return salary;
-    }
-
-    public void setSalary(double salary) {
-        this.salary = salary;
     }
 
     public String getShift() {
         return shift;
     }
 
-    public void setShift(String shift) {
-        this.shift = shift;
-    }
-
     public String getPhoneNumber() {
-        return PhoneNumber;
-    }
-
-    public void setPhoneNumber(String PhoneNumber) {
-        this.PhoneNumber = PhoneNumber;
-    }
-
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
-    }
-
-    public String getAddress() {
-        return address;
-    }
-
-    public void setAddress(String address) {
-        this.address = address;
+        return phoneNumber;
     }
 
     public String getStartDate() {
-        return StartDate;
+        return startDate;
     }
 
-    private void setStartDate(String StartDate) {
-        this.StartDate = StartDate;
+    public double getSalary() {
+        return salary;
+    }
+
+    // ── Setters ──────────────────────────────────────────────
+    private void setStaffId(String staffId) {
+        validateString(staffId, "Staff ID");
+        this.staffId = staffId;
+    }
+
+    public void setName(String name) {
+        validateString(name, "Name");
+        this.name = name;
+    }
+
+    public void setRole(String role) {
+        validateString(role, "Role");
+        this.role = role;
+    }
+
+    public void setShift(String shift) {
+        validateString(shift, "Shift");
+        this.shift = shift;
+    }
+
+    public void setPhoneNumber(String phoneNumber) {
+        validateString(phoneNumber, "Phone Number");
+        this.phoneNumber = phoneNumber;
+    }
+
+    private void setStartDate(String startDate) {
+        validateString(startDate, "Start Date");
+        this.startDate = startDate;
+    }
+
+    public void setSalary(double salary) {
+        if (salary < 0) {
+            System.out.println("Salary cannot be negative");
+        } else {
+            this.salary = salary;
+        }
     }
 }
