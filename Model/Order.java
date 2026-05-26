@@ -3,6 +3,8 @@ package Model;
 import Interface.Displayable;
 import Interface.Calculatable;
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 
 public class Order implements Displayable, Calculatable {
 
@@ -67,6 +69,7 @@ public class Order implements Displayable, Calculatable {
             System.out.println("Cannot add invalid order item.");
             return false;
         }
+
         orderItems.add(orderItem);
         return true;
     }
@@ -77,10 +80,20 @@ public class Order implements Displayable, Calculatable {
             System.out.println("Order cannot be confirmed without items.");
             return false;
         }
+
+        // Aggregate quantities required for each item across multiple order lines
+        Map<String, Integer> requiredQuantities = new HashMap<>();
         for (OrderItem oi : orderItems) {
-            if (!oi.hasEnoughStock()) {
-                System.out.println("Order cannot be confirmed: insufficient stock.");
-                oi.displayInfo();
+            String itemId = oi.getItem().getItemId();
+            requiredQuantities.put(itemId, requiredQuantities.getOrDefault(itemId, 0) + oi.getQuantity());
+        }
+
+        // Check if stock is sufficient for the total aggregated quantities
+        for (OrderItem oi : orderItems) {
+            String itemId = oi.getItem().getItemId();
+            int totalRequired = requiredQuantities.get(itemId);
+            if (oi.getItem().getStock() < totalRequired) {
+                System.out.println("Order cannot be confirmed: insufficient stock for item " + oi.getItem().getItemName() + " (Required: " + totalRequired + ", Available: " + oi.getItem().getStock() + ").");
                 return false;
             }
         }
