@@ -225,4 +225,98 @@ public class ClothingShopSystem implements Displayable, ClothingSearchable, Orde
         System.out.printf( "| Categories    : %-38d |%n", categories.size());
         System.out.println("+--------------------------------------------------------+");
     }
+    // adding customer for overloads
+    public boolean addCustomer(String customerId, String name, String phone) {
+        return addCustomer(new Customer (customerId, name, phone, "Regular"));
+    }
+    public boolean addCustomer(String customerId, String name, String phone, String membershipLevel) {
+    return addCustomer(new Customer(customerId, name, phone, membershipLevel));
+    }
+    // adding staff for overloads
+    public boolean addStaff(String staffId, String name, String phone) {
+    return addStaff(new Staff(staffId, name, phone, "General Staff", "Unknown Shift", "No Date", 0));
+    }
+    public boolean addStaff(String staffId, String name, String phone,
+                        String role, String shift, String startDate, double salary) {
+    return addStaff(new Staff(staffId, name, phone, role, shift, startDate, salary));
+    }
+
+    // Process payment for overload
+public boolean processPayment(Order order) {
+    if (order == null) return false;
+    return processPayment(order.getOrderId());
+    }
+
+    public boolean processPayment(String orderId, String paymentMethod) {
+    Order order = searchOrderById(orderId);
+    if (order == null) {
+        System.out.println("Payment failed: order not found.");
+        return false;
+    }
+    boolean paid = order.markAsPaid();
+    if (paid) {
+        System.out.println("Payment via " + paymentMethod + " processed for order " + orderId + ".");
+    }
+    return paid;
+    }
+
+    // Creating reciepts for overload
+    public Receipt createReceipt(String receiptId, Order order, String paymentMethod) {
+    return createReceipt(receiptId, order, paymentMethod, "Today");
+    }
+
+    public Receipt createReceipt(String receiptId, Order order) {
+    return createReceipt(receiptId, order, "Cash", "Today");
+    }
+
+    // ---- Searchign for overloads (useful when searchign for name and not ID)
+    public ClothingItem searchClothingItemByName(String itemName) {
+    if (itemName == null) return null;
+    for (ClothingItem item : inventory) {
+        if (item.getItemName().equalsIgnoreCase(itemName.trim())) return item;
+    }
+    return null;
+    }
+    
+    public ArrayList<ClothingItem> searchClothingItemByCategory(String category) {
+    ArrayList<ClothingItem> result = new ArrayList<>();
+    if (category == null) return result;
+    for (ClothingItem item : inventory) {
+        if (item.getCategory().equalsIgnoreCase(category.trim())) result.add(item);
+    }
+    return result;
+    } // instead of return 1 itme, it return in categories like tops or shoes
+
+    // search up costomerby name instead of their ID
+    public Customer searchCustomerByName(String name) {
+    if (name == null) return null;
+    for (Customer c : customers) {
+        if (c.getName().equalsIgnoreCase(name.trim())) return c;
+    }
+    return null;
+    }
+    // return in catrgory like the items 
+    public ArrayList<Staff> searchStaffByRole(String role) {
+    ArrayList<Staff> result = new ArrayList<>();
+    if (role == null) return result;
+    for (Staff s : staffMembers) {
+        if (s.getRole().equalsIgnoreCase(role.trim())) result.add(s);
+    }
+    return result;
+    }
+
+    // find order by costomer name nad not ID(if have multiple order, need to extend into a return list)
+    public Order searchOrderByCustomerId(String customerId) {
+    if (customerId == null) return null;
+    for (Order order : orders) {
+        if (order.getCustomer() != null &&
+            order.getCustomer().getCustomerId().equalsIgnoreCase(customerId.trim())) {
+            return order;
+        }
+    }
+    return null;
+    }
+    
+    
+
 }

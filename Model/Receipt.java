@@ -90,4 +90,36 @@ public class Receipt implements Displayable, Printable {
     public void displayInfo() {
         printReceipt(); // displayInfo() delegates to printReceipt()
     }
+
+    //print the reciept in overloading 
+    public void printReceipt(boolean showCustomerInfo) {
+        if (!valid || order == null) {
+            System.out.println("Cannot print invalid receipt.");
+            return;
+        }
+        System.out.println("Receipt ID     : " + receiptId);
+        System.out.println("Receipt Date   : " + receiptDate);
+        System.out.println("Order ID       : " + order.getOrderId());
+        System.out.println("Payment Method : " + paymentMethod);
+        if (showCustomerInfo && order.getCustomer() != null) {
+            System.out.println("Customer       : " + order.getCustomer().getName());
+        }
+        System.out.printf("Final Amount   : $%.2f%n", finalAmount);
+    }// the ori one alwaus prints customer name. but this let you control the passing false hides customer name.
+    //useful if reciept is being printed in public place
+
+    // passing the 'short' prints single compact line
+    // just reciept ID, Order ID, amount and payment method
+    public void printReceipt(String format) {
+        if (!valid || order == null) {
+            System.out.println("Cannot print invalid receipt.");
+            return;
+        }
+        if ("short".equalsIgnoreCase(format)) {
+            System.out.printf("Receipt %s | Order %s | $%.2f | %s%n",
+                receiptId, order.getOrderId(), finalAmount, paymentMethod);
+        } else {
+            printReceipt();
+        }
+    }
 }

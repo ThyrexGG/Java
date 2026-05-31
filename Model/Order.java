@@ -209,4 +209,32 @@ public class Order implements Displayable, Calculatable {
         System.out.printf( "  Total Amount   : $%.2f%n", calculate());
         System.out.println("====================================================================================================");
     }
+
+    //order item overloads, take item just for clothingitem nad assume customer wants 1 of it
+    public boolean addOrderItem(ClothingItem item) {
+        return addOrderItem(new OrderItem(orderItems.size() + 1, item, 1));
+    }
+
+    //same as the above but need to specify what the customer wants
+    public boolean addOrderItem(ClothingItem item, int quantity) {
+        return addOrderItem(new OrderItem(orderItems.size() + 1, item, quantity));
+    }
+
+    //complete shortcut, if jeans are 10% off, pass 10.0 as thrid argument and handles eveything
+     public boolean addOrderItem(ClothingItem item, int quantity, double discountPercent) {
+        OrderItem oi = new OrderItem(orderItems.size() + 1, item, quantity);
+        oi.setDiscountPercent(discountPercent);
+        return addOrderItem(oi);
+    }
+
+    // calculating the overloads(adds up all items in subtotals, applies to whole order even discounts)
+    public double calculate(double orderDiscount) {
+        double total = calculate();
+        return total - (total * orderDiscount / 100);
+    }
+
+    public double calculate(double orderDiscount, double taxRate) {
+        double discounted = calculate(orderDiscount);
+        return discounted + (discounted * taxRate / 100);
+    }
 }

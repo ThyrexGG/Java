@@ -103,4 +103,30 @@ public class ClothingItem implements Displayable, StockManageable {
             itemId, itemName, size, color, gender, category, price, stock
         );
     }
+
+    // overload of setprice instad of doign math yourelf, pass number and it does math for you 
+    public void setPrice(double price, double discountPercent) {
+        double discounted = price - (price * discountPercent / 100);
+        setPrice(discounted);
+    }
+
+    // increase stock overload does the same thing as above but print reasons 
+    public void increaseStock(int quantity, String reason) {
+        increaseStock(quantity);
+        System.out.println("Stock increased by " + quantity + ". Reason: " + reason);
+    }
+
+    // display info overlaod. always show stock number
+    public void displayInfo(boolean showStock) {
+        if (showStock) {
+            displayInfo();
+        } else {
+            System.out.printf(
+                "  ID: %-6s | %-20s | Size: %-3s | Color: %-7s | %-7s | Category: %-9s | Price: $%-6.2f%n",
+                itemId, itemName, size, color, gender, category, price
+            );
+        }
+    }
+
+
 }

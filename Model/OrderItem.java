@@ -81,4 +81,22 @@ public class OrderItem implements Displayable, Calculatable {
             item.getItemName(), item.getSize(), item.getColor(), quantity, purchasePrice, discountPercent, calculate()
         );
     }
+
+    //calculate for the overloads 
+    public double calculate(double discountPercent) {
+        double subtotal = purchasePrice * quantity;
+        return subtotal - (subtotal * discountPercent / 100);
+    } // uses the discount store in object.this let you try a different discount without changing the stroed value 
+
+    // same idea but with different quantity
+    public double calculate(int quantity) {
+        double subtotal = purchasePrice * quantity;
+        return subtotal - (subtotal * this.discountPercent / 100);
+    }
+
+    //allow you to try different discouint at the same time without changin store value
+    public double calculate(int quantity, double discountPercent) {
+        double subtotal = purchasePrice * quantity;
+        return subtotal - (subtotal * discountPercent / 100);
+    }
 }

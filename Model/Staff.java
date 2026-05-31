@@ -75,4 +75,13 @@ public class Staff extends Person {
         System.out.printf( "| Salary     : $%-41.2f |%n", salary);
         System.out.println("+--------------------------------------------------------+");
     }
+    //lets you confirm the order whether true or false. But if pass true as second argument, prints full ddetails 
+    // insteasd of calling staff.processorder and order.displayinfo seperetely, do it in one go 
+    public boolean processOrder(Order order, boolean printSummary) {
+        boolean result = processOrder(order);
+        if (result && printSummary) {
+            order.displayInfo();
+        }
+        return result;
+    }
 }
