@@ -7,6 +7,8 @@ import Model.Order;
 import Model.OrderItem;
 import Model.Receipt;
 import Model.Staff;
+import Model.Person;
+import java.util.ArrayList;
 
 public class Main {
 
@@ -165,5 +167,27 @@ public class Main {
         System.out.println("  Cancelling order...");
         order2.cancelOrder();
         System.out.println("  Stock after order cancellation (IT003)     : " + denimJacket.getStock());
+
+        // week 8 polymorphism 
+        // superclass referebce holding subclass object 
+        Person p1 = new Customer("C001", "Emma Davis", "012345678", "Gold");
+        Person p2 = new Staff("S001", "Sokha", "011111111", "Cashier", "Morning", "26-05-18", 450);
+
+        // calling override method throug super class ref
+        System.out.println("\n--- Polymorphic displayInfo() ---");
+        p1.displayInfo(); // for customer 
+        p2.displayInfo(); // for staff
+
+        // arraylist using superclass storing diff subclass obj
+        ArrayList<Person> people = new ArrayList<>();
+        people.add(new Customer("C001", "Emma Davis", "012345678", "Gold"));
+        people.add(new Customer("C002", "Dara Sok",   "098765432", "Regular"));
+        people.add(new Staff("S001", "Sokha", "011111111", "Cashier", "Morning", "2026-05-18", 450));
+
+        // looping through, call displayinfo through polymorphism 
+        System.out.println("\n--- Loop through ArrayList<Person> ---");
+        for (Person person : people) {
+            person.displayInfo();
+        }
     }
 }
