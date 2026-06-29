@@ -2,7 +2,8 @@ package Model;
 
 import Interface.Displayable;
 
-public class Person implements Displayable {
+//Week 9 abstract class, means that person can no longer be created directly, can only be extended by subclasses 
+public abstract class Person implements Displayable {
 
     // ── Fields ───────────────────────────────────────────────
     // protected so Customer and Staff can access them directly
@@ -45,10 +46,14 @@ public class Person implements Displayable {
     }
 
     // ── Displayable ──────────────────────────────────────────
-    @Override
-    public void displayInfo() {
-        System.out.println("ID    : " + id);
-        System.out.println("Name  : " + name);
-        System.out.println("Phone : " + phone);
-    }
+    // @Override (old)
+    //public void displayInfo() {
+    //    System.out.println("ID    : " + id);
+    //    System.out.println("Name  : " + name);
+    //    System.out.println("Phone : " + phone);
+    //}
+
+    //Week 9: Person no longer create their own vewrsion of diplay info
+    // only declaring that the method must exists and it makes every subclass write their own version
+    public abstract void displayInfo();
 }
