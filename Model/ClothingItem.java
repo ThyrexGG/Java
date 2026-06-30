@@ -68,8 +68,16 @@ public class ClothingItem implements Displayable, StockManageable {
     public void setCategory(String category) {
         if (category != null && !category.trim().isEmpty()) this.category = category.trim();
     }
+    // week 10, 
     public void setPrice(double price) {
-        this.price = (price >= 0) ? price : 0;
+       try { // attempt to run this code incase something risky might happen
+        if (price < 0) { 
+            throw new IllegalArgumentException("Price cannot be in the negative."); // stop here 
+        }
+        this.price = price; 
+       } catch (IllegalArgumentException e) {
+        System.out.println("Error: " + e.getMessage());
+       }
     }
     public void setStock(int stock) {
         this.stock = (stock >= 0) ? stock : 0;
